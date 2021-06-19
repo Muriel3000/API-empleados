@@ -20,7 +20,7 @@ public class Categoria {
     @Column(name = "sueldo_base")
     private BigDecimal sueldoBase;
 
-    @JsonIgnore
+    @JsonIgnore // evita que se muestre la lista en cadena en front
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Empleado> empleados = new ArrayList<>();
 

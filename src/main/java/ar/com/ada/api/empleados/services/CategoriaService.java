@@ -20,4 +20,13 @@ public class CategoriaService {
     public List<Categoria> traerCategorias(){
         return repository.findAll();
     }
+
+    public Categoria buscarCategoria(Integer id){
+        Optional<Categoria> resultado = repository.findById(id); // metodo 'optional'
+        Categoria categoria = null;
+        if (resultado.isPresent())
+            categoria = resultado.get();
+        return categoria;
+        
+    }
 }
