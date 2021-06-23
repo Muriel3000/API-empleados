@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.empleados.entities.Categoria;
+import ar.com.ada.api.empleados.entities.Empleado;
 import ar.com.ada.api.empleados.repos.CategoriaRepository;
 import java.util.*;
 
@@ -28,5 +29,10 @@ public class CategoriaService {
             categoria = resultado.get();
         return categoria;
         
+    }
+
+    public List<Empleado> traerEmpleadosDeCategoria(Integer id){
+        Categoria categoria = this.buscarCategoria(id);
+        return categoria.getEmpleados();
     }
 }

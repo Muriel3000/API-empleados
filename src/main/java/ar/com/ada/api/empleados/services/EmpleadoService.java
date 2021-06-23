@@ -1,6 +1,7 @@
 package ar.com.ada.api.empleados.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,14 @@ public class EmpleadoService {
 
     public List<Empleado> traerEmpleados(){
         return repo.findAll();
+    }
+
+    public Empleado buscarEmpleadoById(Integer id){
+        Optional<Empleado> result = repo.findById(id);
+        Empleado empleado = null;
+        if (result.isPresent()){
+            empleado = result.get();
+        }
+        return empleado;
     }
 }
