@@ -3,6 +3,7 @@ package ar.com.ada.api.empleados.controllers;
 import ar.com.ada.api.empleados.entities.Categoria;
 import ar.com.ada.api.empleados.entities.Empleado;
 import ar.com.ada.api.empleados.models.response.GenericResponse;
+import ar.com.ada.api.empleados.models.response.InfoMinimaEmpleado;
 import ar.com.ada.api.empleados.services.CategoriaService;
 
 import java.util.List;
@@ -32,8 +33,4 @@ public class CategoriaController {
         return ResponseEntity.ok(service.traerCategorias());
     }
 
-    @GetMapping("/categorias/{catId}")
-    public ResponseEntity<List<Empleado>> traerEmpleadosDeCategoria(@PathVariable("catId") int id){
-        return ResponseEntity.ok(service.traerEmpleadosDeCategoria(id));
-    }
 }

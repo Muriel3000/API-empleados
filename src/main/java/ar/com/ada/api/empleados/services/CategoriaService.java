@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.empleados.entities.Categoria;
 import ar.com.ada.api.empleados.entities.Empleado;
+import ar.com.ada.api.empleados.models.response.InfoMinimaEmpleado;
 import ar.com.ada.api.empleados.repos.CategoriaRepository;
 import java.util.*;
 
@@ -31,8 +32,15 @@ public class CategoriaService {
         
     }
 
-    public List<Empleado> traerEmpleadosDeCategoria(Integer id){
+    public List<InfoMinimaEmpleado> traerEmpleadosDeCategoria(Integer id){
         Categoria categoria = this.buscarCategoria(id);
-        return categoria.getEmpleados();
+        List<InfoMinimaEmpleado> traerEmpleados = new ArrayList();
+        for (Empleado e : categoria.getEmpleados()){
+            InfoMinimaEmpleado info = new InfoMinimaEmpleado();
+            info.id = e.getEmpleadoId();
+            info.nombre = e.getNombre();
+            traerEmpleados.add(info);
+        }
+        return traerEmpleados;
     }
 }
